@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Commerce</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="home">
+    <nav>
+      <!-- TOP-LEFT LOGO -->
+      <a href="#" class="logo" aria-label="Home">
+        <img src="OIP.jpeg" alt="Brand Logo" class="logo-img">
+      </a>
+
+      <ul>
+        <li onclick="productCategory(event)" data-value="men">
+          Men
+          <div class="sub-menu">
+            <ul>
+              <li onclick="productSubCategory(event)" data-value="tshirts">T-Shirts</li>
+              <li onclick="productSubCategory(event)" data-value="shirts">Shirts</li>
+              <li onclick="productSubCategory(event)" data-value="pants">Pants</li>
+              <li onclick="productSubCategory(event)" data-value="jackets">Jackets</li>
+            </ul>
+        </div>
+        </li>
+        <li onclick="productCategory(event)" data-value="Women">
+          Women
+          <div class="sub-menu">
+            <ul>
+              <li onclick="productSubCategory(event)" data-value="jeans">Jeans</li>
+              <li onclick="productSubCategory(event)" data-value="sarees">Sarees</li>
+              <li onclick="productSubCategory(event)" data-value="chudidhar">Chudidhar</li>
+              <li onclick="productSubCategory(event)" data-value="longfrocks">Long Frocks</li>
+            </ul>
+          </div>
+        </li>
+        <li onclick="productCategory(event)" data-value="Electronics">
+          Electronics
+          <div class="sub-menu">
+            <ul>
+              <li onclick="productSubCategory(event)" data-value="mobiles">Mobiles</li>
+              <li onclick="productSubCategory(event)" data-value="tvs">TVs</li>
+              <li onclick="productSubCategory(event)" data-value="laptops">Laptops</li>
+              <li onclick="productSubCategory(event)" data-value="speakers">Accessories</li>
+            </ul>
+          </div>
+        </li>
+        <li onclick="productCategory(event)" data-value="Jewellery">
+          Jewellery
+          <div class="sub-menu">
+            <ul>
+              <li onclick="productSubCategory(event)" data-value="earrings">Earrings</li>
+              <li onclick="productSubCategory(event)" data-value="bangels">Bangels</li>
+              <li onclick="productSubCategory(event)" data-value="necksets">Necksets</li>
+              <li onclick="productSubCategory(event)" data-value="rings">Rings</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+      <div class="search-bar">
+        <input type="search" placeholder="Search products...">
+      </div>
+
+      <div class="right-menu">
+        <span>Profile</span>
+        <span>Wishlist</span>
+        <span>Bag</span>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Section so the background image shows below the navbar -->
+  <div class="content">
+    <h1>Welcome to Our E-Commerce Store</h1>
+    <p>Explore the best fashion, electronics, jewellery and more.</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
