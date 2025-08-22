@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error-msg{
+            font-size: 12px;
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form action="" id="signupForm" >   <!--onsubmit="signUp()" -->
+            <label for="name">   Name  </label>
+            <input type="text" id="name" placeholder="enter the name">
+            <span class="error-msg">Please enter the name</span>
+            <br>
+
+              <label for="email">email</label>
+            <input type="email" id="email"  placeholder="enter the email"> <br>
+
+            <label for="password">Password</label>
+            <input type="password" name="" id=""> <br>
+
+             <label for="password">Confirm Password</label> 
+            <input type="password" name="" id=""> <br>
+            <span>Please enter the confirm password</span>
+            <span>password didn't match</span>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+
+        const form = document.getElementById("signupForm");
+        form.addEventListener("submit", function(e){
+            e.preventDefault();
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+
+            const user = {
+                name: name,
+                email: email,
+            };
+            localStorage.setItem("loginData",JSON.stringify(user));
+
+
+ 
+           
+        });
+    </script>
+</body>
+</html>
