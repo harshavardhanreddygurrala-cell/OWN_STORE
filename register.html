@@ -1,58 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .error-msg{
-            font-size: 12px;
-            color: red;
-            display: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <style>
+    .error-msg {
+      font-size: 12px;
+      color: red;
+      display: none;
+      text-align: center;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f5f5f5;
+      font-family: Arial, sans-serif;
+    }
+
+    .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 300px;
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 4px;
+      background: #007bff;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    /* Secondary button for Login */
+    .login-btn {
+      background: #28a745;
+    }
+
+    .login-btn:hover {
+      background: #1e7e34;
+    }
+  </style>
 </head>
+
 <body>
-    <div>
-        <form action="" id="signupForm" >   <!--onsubmit="signUp()" -->
-            <label for="name">   Name  </label>
-            <input type="text" id="name" placeholder="enter the name">
-            <span class="error-msg">Please enter the name</span>
-            <br>
+  <div class="login-box">
+    <h2>Register</h2>
+    <form id="signupForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Enter the name">
+      <span class="error-msg" id="nameError">Name is required</span>
 
-              <label for="email">email</label>
-            <input type="email" id="email"  placeholder="enter the email"> <br>
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter the email">
+      <span class="error-msg" id="emailError">Email is required</span>
 
-            <label for="password">Password</label>
-            <input type="password" name="" id=""> <br>
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter password">
+      <span class="error-msg" id="passwordError">Password is required</span>
 
-             <label for="password">Confirm Password</label> 
-            <input type="password" name="" id=""> <br>
-            <span>Please enter the confirm password</span>
-            <span>password didn't match</span>
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" placeholder="Confirm password">
+      <span class="error-msg" id="confirmPasswordError">Confirm Password is required</span>
+      <span class="error-msg" id="mismatchError">Passwords do not match</span>
 
-            <button type="submit">Register</button>
-        </form>
-    </div>
+      <!-- Register button -->
+      <button type="submit">Register</button>
+    </form>
 
-    <script>
+    <!-- Extra Login button -->
+    <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
+  </div>
 
-        const form = document.getElementById("signupForm");
-        form.addEventListener("submit", function(e){
-            e.preventDefault();
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
+  <script>
+    const form = document.getElementById("signupForm");
 
-            const user = {
-                name: name,
-                email: email,
-            };
-            localStorage.setItem("loginData",JSON.stringify(user));
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
 
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const confirmPassword = document.getElementById("confirmPassword").value.trim();
 
- 
-           
-        });
-    </script>
+      let valid = true;
+
+      // Hide all error messages initially
+      document.querySelectorAll(".error-msg").forEach(el => el.style.display = "none");
+
+      if (name === "") {
+        document.getElementById("nameError").style.display = "block";
+        valid = false;
+      }
+      if (email === "") {
+        document.getElementById("emailError").style.display = "block";
+        valid = false;
+      }
+      if (password === "") {
+        document.getElementById("passwordError").style.display = "block";
+        valid = false;
+      }
+      if (confirmPassword === "") {
+        document.getElementById("confirmPasswordError").style.display = "block";
+        valid = false;
+      } else if (password !== "" && confirmPassword !== password) {
+        document.getElementById("mismatchError").style.display = "block";
+        valid = false;
+      }
+
+      if (valid) {
+        const user = { email, password };
+        localStorage.setItem("loginData", JSON.stringify(user));
+        alert("Registration Successful! Please login now.");
+        window.location.href = "login.html";
+      }
+    });
+  </script>
 </body>
+
 </html>
